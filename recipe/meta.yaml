@@ -39,7 +39,7 @@ about:
   home: https://github.com/astropy/pyregion
   license: MIT
   license_family: MIT
-  license_file: licenses/LICENSE
+  license_file: LICENSE
   summary: Python parser for ds9 and ciao region files
   description: |
     pyregion is a python module to parse ds9 region files. It also supports
