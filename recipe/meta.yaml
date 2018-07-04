@@ -13,23 +13,24 @@ source:
   '{{ hash_type }}': '{{ hash_value }}'
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --offline --single-version-externally-managed --record=record.txt
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - python
     - setuptools
-    - numpy 1.9.*  # [not (py36 and win)]
-    - numpy 1.11.*  # [py36 and win]
+    - numpy        # [not (py36 and win)]
+    - numpy         # [py36 and win]
     - cython
-    - toolchain
   run:
     - python
     - pyparsing >=2.0.0
     - astropy
-    - numpy >=1.9  # [not (py36 and win)]
-    - numpy >=1.11  # [py36 and win]
+    - {{ pin_compatible('numpy') }}   # [not (py36 and win)]
+    - {{ pin_compatible('numpy') }}   # [py36 and win]
 
 test:
   imports:
