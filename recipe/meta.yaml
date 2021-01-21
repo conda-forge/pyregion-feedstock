@@ -1,7 +1,5 @@
 {% set name = "pyregion" %}
 {% set version = "2.0" %}
-{% set hash_type = "sha256" %}
-{% set hash_value = "a8ac5f764b53ec332f6bc43f6f2193ca13e8b7d5a3fb2e20ced6b2ea42a9d094" %}
 
 package:
   name: '{{ name|lower }}'
@@ -10,7 +8,7 @@ package:
 source:
   fn: '{{ name }}-{{ version }}.tar.gz'
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  '{{ hash_type }}': '{{ hash_value }}'
+  'sha256': 'a8ac5f764b53ec332f6bc43f6f2193ca13e8b7d5a3fb2e20ced6b2ea42a9d094'
 
 build:
   number: 1001
