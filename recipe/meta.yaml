@@ -20,15 +20,15 @@ requirements:
   host:
     - python
     - setuptools
-    - numpy        # [not (py36 and win)]
-    - numpy         # [py36 and win]
+    - numpy        # [not (py==36 and win)]
+    - numpy         # [py==36 and win]
     - cython
   run:
     - python
     - pyparsing >=2.0.0
     - astropy
-    - {{ pin_compatible('numpy') }}   # [not (py36 and win)]
-    - {{ pin_compatible('numpy') }}   # [py36 and win]
+    - {{ pin_compatible('numpy') }}   # [not (py==36 and win)]
+    - {{ pin_compatible('numpy') }}   # [py==36 and win]
 
 test:
   imports:
