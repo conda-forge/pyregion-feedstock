@@ -1,5 +1,5 @@
 {% set name = "pyregion" %}
-{% set version = "2.1.1" %}
+{% set version = "2.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4e4ceb92c6d1c52d6da3741ea179e9b52b40f8a47c2da2063f6eb020dbfed1f9
+  sha256: 5cbdb8017c744d39e36d67ec530dbfafc7ae245aa512185b35645b87f259f850
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install --offline --single-version-externally-managed --record=record.txt
 
 requirements:
