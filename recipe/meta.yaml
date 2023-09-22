@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  script: python setup.py install --offline --single-version-externally-managed --record=record.txt
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -23,16 +23,16 @@ requirements:
     - {{ compiler('c') }}
   host:
     - python
+    - pip
     - setuptools
-    - numpy        # [not (py==36 and win)]
-    - numpy         # [py==36 and win]
+    - setuptools_scm
+    - numpy
     - cython
   run:
     - python
     - pyparsing >=2.0.0
-    - astropy
-    - {{ pin_compatible('numpy') }}   # [not (py==36 and win)]
-    - {{ pin_compatible('numpy') }}   # [py==36 and win]
+    - astropy >=4.0.0
+    - {{ pin_compatible('numpy') }}
 
 test:
   imports:
