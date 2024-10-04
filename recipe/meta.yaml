@@ -1,18 +1,17 @@
 {% set name = "pyregion" %}
-{% set version = "2.1.1" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4e4ceb92c6d1c52d6da3741ea179e9b52b40f8a47c2da2063f6eb020dbfed1f9
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyregion-{{ version }}.tar.gz
+  sha256: e8498711421173239689de523bb465245f5551a18a181cb4956d87f9c7464925
 
 build:
-  number: 2
-  script: python setup.py install --offline --single-version-externally-managed --record=record.txt
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   build:
@@ -23,20 +22,24 @@ requirements:
     - {{ compiler('c') }}
   host:
     - python
+    - numpy
     - setuptools
-    - numpy        # [not (py==36 and win)]
-    - numpy         # [py==36 and win]
+    - setuptools-scm
     - cython
+    - extension-helpers
   run:
     - python
-    - pyparsing >=2.0.0
-    - astropy
-    - {{ pin_compatible('numpy') }}   # [not (py==36 and win)]
-    - {{ pin_compatible('numpy') }}   # [py==36 and win]
+    - numpy >=1.23
+    - astropy >=5.0
+    - pyparsing >=2.0
 
 test:
+  requires:
+    - pytest-astropy
   imports:
     - pyregion
+  commands:
+    - pytest --pyargs pyregion
 
 about:
   home: https://github.com/astropy/pyregion
@@ -58,3 +61,4 @@ extra:
   recipe-maintainers:
     - mwcraig
     - bsipocz
+    - astrofrog
