@@ -1,5 +1,5 @@
 {% set name = "pyregion" %}
-{% set version = "2.1.1" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4e4ceb92c6d1c52d6da3741ea179e9b52b40f8a47c2da2063f6eb020dbfed1f9
+  sha256: e8498711421173239689de523bb465245f5551a18a181cb4956d87f9c7464925
 
 build:
-  number: 2
+  number: 0
   script: python setup.py install --offline --single-version-externally-managed --record=record.txt
 
 requirements:
@@ -21,6 +21,7 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - python
     - setuptools
